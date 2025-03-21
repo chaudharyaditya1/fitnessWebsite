@@ -1,0 +1,50 @@
+/* client/src/components/header.css */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #222;
+    color: white;
+  }
+  
+  #menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  #nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  #nav-links.open {
+    display: block; /* This will control the open state */
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    #nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+    }
+  
+    #nav-links.open {
+      display: flex;
+    }
+  }
+  
