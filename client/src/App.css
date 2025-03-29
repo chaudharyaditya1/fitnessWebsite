@@ -2,21 +2,37 @@
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  text-align: center;
+  padding-top: 100px; /* Make room for the fixed header */
 }
 
 /* Styles for the main section */
 main {
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 20px;
 }
 
-/* Header Styling */
+/* Login and Register form styling */
+.login-container,
+.register-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2,
+.register-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Header content styling */
 .header__content {
   display: flex;
   flex-direction: column;

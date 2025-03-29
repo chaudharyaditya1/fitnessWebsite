@@ -1,48 +1,40 @@
 // client/src/components/Header.js
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 
-
 const Header = () => {
-  const menuBtnRef = useRef(null);
-  const navLinksRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const menuBtn = menuBtnRef.current;
-    const navLinks = navLinksRef.current;
-    const menuBtnIcon = menuBtn.querySelector("i");
-
-    const handleMenuClick = () => {
-      navLinks.classList.toggle("open");
-      const isOpen = navLinks.classList.contains("open");
-      menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
-    };
-
-    const handleNavClick = () => {
-      navLinks.classList.remove("open");
-      menuBtnIcon.setAttribute("class", "ri-menu-line");
-    };
-
-    menuBtn.addEventListener("click", handleMenuClick);
-    navLinks.addEventListener("click", handleNavClick);
-
-    // Cleanup event listeners on component unmount
-    return () => {
-      menuBtn.removeEventListener("click", handleMenuClick);
-      navLinks.removeEventListener("click", handleNavClick);
-    };
-  }, []);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header>
-      <button id="menu-btn" ref={menuBtnRef}>
-        <i className="ri-menu-line"></i>
-      </button>
-      <nav id="nav-links" ref={navLinksRef}>
-        {/* Add your nav items here */}
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+      <nav>
+        <div className="nav__header">
+          <div className="nav__logo">
+            <Link to="/">
+              <span>FITNESS POINT</span>
+            </Link>
+          </div>
+          <button className="nav__menu__btn" onClick={toggleMenu}>
+            ☰
+          </button>
+          <div className="nav__btns">
+            <Link to="/register" className="btn">Join Now</Link>
+          </div>
+        </div>
+        
+        <ul className={`nav__links ${isMenuOpen ? 'open' : ''}`}>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/services">Services</Link></li>
+          <li><Link to="/classes">Classes</Link></li>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/register">Register</Link></li>
+        </ul>
       </nav>
     </header>
   );
